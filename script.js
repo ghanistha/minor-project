@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
+    const navbar = document.querySelector('.navbar');
 
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', function() {
@@ -14,6 +15,37 @@ document.addEventListener('DOMContentLoaded', function() {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         }));
+    }
+
+    // Sticky navbar on scroll
+    if (navbar) {
+        const onScroll = () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    // Reveal on scroll using IntersectionObserver
+    const revealTargets = document.querySelectorAll('.will-reveal, .exam-card, .feature-item, .schedule-card, .video-card, .paper-card, .exam-section, .calendar-card');
+    if ('IntersectionObserver' in window && revealTargets.length) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
+
+        revealTargets.forEach(el => {
+            el.classList.add('will-reveal');
+            io.observe(el);
+        });
     }
 
     // Video Category Filtering
