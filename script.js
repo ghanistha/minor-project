@@ -2,33 +2,27 @@
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         }));
     }
-
     // Video Category Filtering
     const categoryBtns = document.querySelectorAll('.category-btn');
     const videoCards = document.querySelectorAll('.video-card');
-
     categoryBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             // Remove active class from all buttons
             categoryBtns.forEach(b => b.classList.remove('active'));
             // Add active class to clicked button
             this.classList.add('active');
-
             const category = this.getAttribute('data-category');
-
             videoCards.forEach(card => {
                 if (category === 'all' || card.classList.contains(category)) {
                     card.style.display = 'block';
@@ -38,17 +32,30 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-
     // Schedule Filtering
     const examFilter = document.getElementById('examFilter');
     const scheduleCards = document.querySelectorAll('.schedule-card');
-
     if (examFilter) {
         examFilter.addEventListener('change', function() {
             const selectedExam = this.value;
-
             scheduleCards.forEach(card => {
                 if (selectedExam === 'all' || card.classList.contains(selectedExam)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    }
+
+    // Papers Filtering
+    const paperFilter = document.getElementById('paperFilter');
+    const paperCards = document.querySelectorAll('.paper-card');
+    if (paperFilter) {
+        paperFilter.addEventListener('change', function() {
+            const selected = this.value;
+            paperCards.forEach(card => {
+                if (selected === 'all' || card.classList.contains(selected)) {
                     card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
@@ -65,13 +72,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-
             // Basic validation
             if (!email || !password) {
                 alert('Please fill in all fields');
                 return;
             }
-
             // Simulate login (replace with actual authentication)
             if (email === 'demo@example.com' && password === 'password') {
                 alert('Login successful!');
@@ -83,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
     // Register Form Handler
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
@@ -96,29 +100,24 @@ document.addEventListener('DOMContentLoaded', function() {
             const examInterest = document.getElementById('examInterest').value;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
-
             // Validation
             if (!fullName || !email || !phone || !examInterest || !password || !confirmPassword) {
                 alert('Please fill in all fields');
                 return;
             }
-
             if (password !== confirmPassword) {
                 alert('Passwords do not match');
                 return;
             }
-
             if (password.length < 6) {
                 alert('Password must be at least 6 characters long');
                 return;
             }
-
             // Simulate registration (replace with actual registration)
             alert('Registration successful! Please login.');
             window.location.href = 'login.html';
         });
     }
-
     // Check login status and update navigation
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     const loginBtn = document.querySelector('.login-btn');
@@ -134,7 +133,6 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.reload();
         });
     }
-
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -148,7 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
     // Add loading animation for video iframes
     const videoIframes = document.querySelectorAll('.video-thumbnail iframe');
     videoIframes.forEach(iframe => {
@@ -157,7 +154,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
 // Utility Functions
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
@@ -175,14 +171,11 @@ function showNotification(message, type = 'info') {
         z-index: 10000;
         animation: slideIn 0.3s ease;
     `;
-
     document.body.appendChild(notification);
-
     setTimeout(() => {
         notification.remove();
     }, 3000);
 }
-
 // Add CSS animation for notifications
 const style = document.createElement('style');
 style.textContent = `
