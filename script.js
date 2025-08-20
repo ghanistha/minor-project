@@ -57,6 +57,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Papers Filtering
+    const paperFilter = document.getElementById('paperFilter');
+    const paperCards = document.querySelectorAll('.paper-card');
+    if (paperFilter) {
+        paperFilter.addEventListener('change', function() {
+            const selected = this.value;
+            paperCards.forEach(card => {
+                if (selected === 'all' || card.classList.contains(selected)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    }
+
     // Login Form Handler
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
