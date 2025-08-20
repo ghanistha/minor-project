@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+@@ -2,72 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,15 +22,24 @@
                 <li class="nav-item"><a href="papers.html" class="nav-link active">Previous Papers</a></li>
                 <li class="nav-item"><a href="login.html" class="nav-link login-btn">Login</a></li>
             </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </nav>
 
     <main class="papers-main" style="margin-top: 70px; padding: 2rem 0;">
+    <main class="papers-main">
         <div class="container">
             <h1 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">Previous Year Papers</h1>
-            
+            <h1>Previous Year Papers</h1>
+
             <div class="papers-filter" style="text-align: center; margin-bottom: 3rem;">
                 <select id="paperFilter" style="padding: 10px 20px; border: 2px solid #ddd; border-radius: 5px;">
+            <div class="papers-filter">
+                <select id="paperFilter">
                     <option value="all">All Exams</option>
                     <option value="upsc">UPSC</option>
                     <option value="mpsc">MPSC</option>
@@ -44,8 +53,15 @@
                     <p style="color: #666; margin-bottom: 1rem;">General Studies Paper I & II</p>
                     <div style="margin-bottom: 1rem;">
                         <span style="background: #3498db; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">UPSC</span>
+            <div class="papers-grid">
+                <div class="paper-card upsc">
+                    <h3>UPSC Prelims 2023</h3>
+                    <p>General Studies Paper I & II</p>
+                    <div>
+                        <span class="video-category">UPSC</span>
                     </div>
                     <button style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                    <button class="download-btn">
                         <i class="fas fa-download"></i> Download PDF
                     </button>
                 </div>
@@ -55,8 +71,14 @@
                     <p style="color: #666; margin-bottom: 1rem;">Tier 1 All Shifts</p>
                     <div style="margin-bottom: 1rem;">
                         <span style="background: #27ae60; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">SSC</span>
+                <div class="paper-card ssc">
+                    <h3>SSC CGL 2023</h3>
+                    <p>Tier 1 All Shifts</p>
+                    <div>
+                        <span class="video-category">SSC</span>
                     </div>
                     <button style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                    <button class="download-btn">
                         <i class="fas fa-download"></i> Download PDF
                     </button>
                 </div>
@@ -66,21 +88,25 @@
                     <p style="color: #666; margin-bottom: 1rem;">Preliminary Examination</p>
                     <div style="margin-bottom: 1rem;">
                         <span style="background: #f39c12; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">MPSC</span>
+                <div class="paper-card mpsc">
+                    <h3>MPSC State Service 2023</h3>
+                    <p>Preliminary Examination</p>
+                    <div>
+                        <span class="video-category">MPSC</span>
                     </div>
                     <button style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                    <button class="download-btn">
                         <i class="fas fa-download"></i> Download PDF
                     </button>
                 </div>
             </div>
         </div>
     </main>
-
     <footer class="footer">
         <div class="container">
             <p>© 2024 ExamPrep Hub. All rights reserved.</p>
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
